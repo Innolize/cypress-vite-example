@@ -1,9 +1,9 @@
 import reactLogo from "./assets/react.svg";
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import SignUp from "./pages/SignUp";
-import SignIn from "./pages/SignIn";
-import Pricing from "./pages/Pricing";
+import SignUp from "./pages/sign-up";
+import SignIn from "./pages/sign-in";
+import Pricing from "./pages/pricing";
 import Checkout from "./pages/checkout";
 
 const MainPage = () => {
