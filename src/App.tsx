@@ -1,21 +1,10 @@
-import reactLogo from "./assets/react.svg";
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import SignUp from "./pages/sign-up";
 import SignIn from "./pages/sign-in";
 import Pricing from "./pages/pricing";
 import Checkout from "./pages/checkout";
-
-const MainPage = () => {
-  return (
-    <div>
-      <a href="https://reactjs.org" target="_blank">
-        <img src={reactLogo} className="logo react" alt="React logo" />
-      </a>
-      <h1>React</h1>
-    </div>
-  );
-};
+import MainPage from "./pages/main";
 
 function App() {
   return (
