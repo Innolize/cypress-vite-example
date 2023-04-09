@@ -1,4 +1,3 @@
-import * as React from "react";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -11,6 +10,13 @@ import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
+import { useFormik } from "formik";
+import { VALIDATION_SCHEMNA } from "../../utils/validation-schemas";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../providers/authProvider";
+import { IUser } from "../../interfaces/User";
+import { useContext, useEffect } from "react";
+import { ROUTES } from "../../routes";
 
 function Copyright(props: any) {
   return (
@@ -30,15 +36,38 @@ function Copyright(props: any) {
   );
 }
 
+const validateUser = ({ email, password }: IUser): Boolean => {
+  if (email === "test@gmail.com" && password === "password") {
+    return true;
+  } else {
+    return false;
+  }
+};
+
 export default function SignIn() {
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
-  };
+  const { setAuth, user } = useContext(AuthContext);
+  const navitgate = useNavigate();
+
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+      password: "",
+    },
+    validationSchema: VALIDATION_SCHEMNA.signIn,
+    onSubmit: (values) => {
+      if (validateUser({ ...values })) {
+        setAuth({ ...values });
+      } else {
+        alert(JSON.stringify(values, null, 2));
+      }
+    },
+  });
+
+  useEffect(() => {
+    if (user) {
+      navitgate(ROUTES.CHECKOUT);
+    }
+  }, [user]);
 
   return (
     <Container component="main" maxWidth="xs">
@@ -57,26 +86,37 @@ export default function SignIn() {
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
-        <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+        <Box
+          component="form"
+          onSubmit={formik.handleSubmit}
+          noValidate
+          sx={{ mt: 1 }}
+        >
           <TextField
             margin="normal"
-            required
             fullWidth
             id="email"
-            label="Email Address"
+            label="Email"
             name="email"
-            autoComplete="email"
             autoFocus
+            value={formik.values.email}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            error={formik.touched.email && Boolean(formik.errors.email)}
+            helperText={formik.touched.email && formik.errors.email}
           />
           <TextField
             margin="normal"
-            required
             fullWidth
             name="password"
             label="Password"
             type="password"
             id="password"
-            autoComplete="current-password"
+            value={formik.values.password}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            error={formik.touched.password && Boolean(formik.errors.password)}
+            helperText={formik.touched.password && formik.errors.password}
           />
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
