@@ -1,6 +1,7 @@
 import reactLogo from "./assets/react.svg";
 import "./App.css";
-import { BrowserRouter, Route, Router, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import SignUp from "./pages/SignUp";
 
 const MainPage = () => {
   return (
@@ -19,6 +20,7 @@ function App() {
       <div className="App">
         <Routes>
           <Route path="/" Component={MainPage}></Route>
+          <Route path="/signup" Component={SignUp}></Route>
         </Routes>
       </div>
     </BrowserRouter>
