@@ -1,4 +1,4 @@
-import reactLogo from "../../assets/react.svg";
+import reactLogo from '../../assets/react.svg'
 
 const MainPage = () => {
   return (
@@ -8,8 +8,7 @@ const MainPage = () => {
       </a>
       <h1>React</h1>
     </div>
-  );
-};
+  )
+}
 
-export default MainPage;
-
+export default MainPage

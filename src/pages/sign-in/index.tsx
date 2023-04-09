@@ -1,22 +1,22 @@
-import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
-import CssBaseline from "@mui/material/CssBaseline";
-import TextField from "@mui/material/TextField";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
-import Link from "@mui/material/Link";
-import Grid from "@mui/material/Grid";
-import Box from "@mui/material/Box";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
-import { useFormik } from "formik";
-import { VALIDATION_SCHEMNA } from "../../utils/validation-schemas";
-import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../../providers/authProvider";
-import { IUser } from "../../interfaces/User";
-import { useContext, useEffect } from "react";
-import { ROUTES } from "../../routes";
+import Avatar from '@mui/material/Avatar'
+import Button from '@mui/material/Button'
+import CssBaseline from '@mui/material/CssBaseline'
+import TextField from '@mui/material/TextField'
+import FormControlLabel from '@mui/material/FormControlLabel'
+import Checkbox from '@mui/material/Checkbox'
+import Link from '@mui/material/Link'
+import Grid from '@mui/material/Grid'
+import Box from '@mui/material/Box'
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
+import Typography from '@mui/material/Typography'
+import Container from '@mui/material/Container'
+import { useFormik } from 'formik'
+import { VALIDATION_SCHEMNA } from '../../utils/validation-schemas'
+import { useNavigate } from 'react-router-dom'
+import { AuthContext } from '../../providers/authProvider'
+import { IUser } from '../../interfaces/User'
+import { useContext, useEffect } from 'react'
+import { ROUTES } from '../../routes'
 
 function Copyright(props: any) {
   return (
@@ -26,48 +26,48 @@ function Copyright(props: any) {
       align="center"
       {...props}
     >
-      {"Copyright © "}
+      {'Copyright © '}
       <Link color="inherit" href="https://mui.com/">
         Your Website
-      </Link>{" "}
+      </Link>{' '}
       {new Date().getFullYear()}
-      {"."}
+      {'.'}
     </Typography>
-  );
+  )
 }
 
 const validateUser = ({ email, password }: IUser): Boolean => {
-  if (email === "test@gmail.com" && password === "password") {
-    return true;
+  if (email === 'test@gmail.com' && password === 'password') {
+    return true
   } else {
-    return false;
+    return false
   }
-};
+}
 
 export default function SignIn() {
-  const { setAuth, user } = useContext(AuthContext);
-  const navigate = useNavigate();
+  const { setAuth, user } = useContext(AuthContext)
+  const navigate = useNavigate()
 
   const formik = useFormik({
     initialValues: {
-      email: "",
-      password: "",
+      email: '',
+      password: '',
     },
     validationSchema: VALIDATION_SCHEMNA.signIn,
     onSubmit: (values) => {
       if (validateUser({ ...values })) {
-        setAuth({ ...values });
+        setAuth({ ...values })
       } else {
-        alert(JSON.stringify(values, null, 2));
+        alert(JSON.stringify(values, null, 2))
       }
     },
-  });
+  })
 
   useEffect(() => {
     if (user) {
-      navigate(ROUTES.CHECKOUT);
+      navigate(ROUTES.CHECKOUT)
     }
-  }, [user, navigate]);
+  }, [user, navigate])
 
   return (
     <Container component="main" maxWidth="xs">
@@ -75,12 +75,12 @@ export default function SignIn() {
       <Box
         sx={{
           marginTop: 8,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
         }}
       >
-        <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+        <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
@@ -146,6 +146,5 @@ export default function SignIn() {
       </Box>
       <Copyright sx={{ mt: 8, mb: 4 }} />
     </Container>
-  );
+  )
 }
-
