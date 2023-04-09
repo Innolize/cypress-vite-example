@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
 import Pricing from "./pages/Pricing";
+import Checkout from "./pages/checkout";
 
 const MainPage = () => {
   return (
@@ -24,7 +25,8 @@ function App() {
           <Route path="/" Component={MainPage}></Route>
           <Route path="/signup" Component={SignUp}></Route>
           <Route path="/signin" Component={SignIn} />
-          <Route path="/checkout" Component={Pricing} />
+          <Route path="/pricing" Component={Pricing} />
+          <Route path="/checkout" Component={Checkout} />
         </Routes>
       </div>
     </BrowserRouter>
