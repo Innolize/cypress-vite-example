@@ -44,8 +44,6 @@ function getStepContent(step: number) {
   }
 }
 
-const theme = createTheme();
-
 export default function Checkout() {
   const [activeStep, setActiveStep] = React.useState(0);
 

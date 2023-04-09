@@ -46,7 +46,7 @@ const validateUser = ({ email, password }: IUser): Boolean => {
 
 export default function SignIn() {
   const { setAuth, user } = useContext(AuthContext);
-  const navitgate = useNavigate();
+  const navigate = useNavigate();
 
   const formik = useFormik({
     initialValues: {
@@ -65,9 +65,9 @@ export default function SignIn() {
 
   useEffect(() => {
     if (user) {
-      navitgate(ROUTES.CHECKOUT);
+      navigate(ROUTES.CHECKOUT);
     }
-  }, [user]);
+  }, [user, navigate]);
 
   return (
     <Container component="main" maxWidth="xs">

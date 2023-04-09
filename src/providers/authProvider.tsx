@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useState } from "react";
 import { IUser } from "../interfaces/User";
 
 export const AuthContext = createContext<IAuthorProviderValue>({
