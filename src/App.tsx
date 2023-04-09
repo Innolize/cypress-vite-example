@@ -5,26 +5,29 @@ import SignIn from "./pages/sign-in";
 import Pricing from "./pages/pricing";
 import Checkout from "./pages/checkout";
 import MainPage from "./pages/main";
-import ColorProvider from "./providers/ColorMode";
+import { AuthProvider } from "./providers/authProvider";
 import { ThemeProvider, createTheme } from "@mui/material";
+import { ROUTES } from "./routes";
 
-const theme = createTheme({ palette: { mode: "dark" } });
+const defaultTheme = createTheme({ palette: { mode: "dark" } });
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <BrowserRouter>
-        <div className="App">
-          <Routes>
-            <Route path="/" Component={MainPage}></Route>
-            <Route path="/signup" Component={SignUp}></Route>
-            <Route path="/signin" Component={SignIn} />
-            <Route path="/pricing" Component={Pricing} />
-            <Route path="/checkout" Component={Checkout} />
-          </Routes>
-        </div>
-      </BrowserRouter>
-    </ThemeProvider>
+    <AuthProvider>
+      <ThemeProvider theme={defaultTheme}>
+        <BrowserRouter>
+          <div className="App">
+            <Routes>
+              <Route path={ROUTES.HOME} Component={MainPage} />
+              <Route path={ROUTES.SIGN_UP} Component={SignUp} />
+              <Route path={ROUTES.SIGN_IN} Component={SignIn} />
+              <Route path={ROUTES.PRICING} Component={Pricing} />
+              <Route path={ROUTES.CHECKOUT} Component={Checkout} />
+            </Routes>
+          </div>
+        </BrowserRouter>
+      </ThemeProvider>
+    </AuthProvider>
   );
 }
 
