@@ -8,14 +8,17 @@ export const AuthContext = createContext<IAuthorProviderValue>({
 
 interface IAuthorProviderValue {
   user: IUser | null
-  setAuth: (user: IUser) => void
+  setAuth: (user: IUser | null) => void
 }
 
 export const AuthProvider = (props: any) => {
-  const [user, setUser] = useState<IUser | null>(null)
+  const [user, setUser] = useState<IUser | null>(
+    JSON.parse(localStorage.getItem('user') as string)
+  )
 
-  const setAuth = (user: IUser) => {
+  const setAuth = (user: IUser | null) => {
     setUser(user)
+    localStorage.setItem('user', JSON.stringify(user))
   }
 
   const value: IAuthorProviderValue = {
