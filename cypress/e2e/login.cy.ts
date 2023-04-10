@@ -41,6 +41,6 @@ describe('login', () => {
 
     cy.get('@form').contains('Sign In').click()
 
-    cy.url().should('eq', `${Cypress.env('baseUrl')}/pricing`)
+    cy.url().should('eq', `${Cypress.config().baseUrl}/pricing`)
   })
 })
