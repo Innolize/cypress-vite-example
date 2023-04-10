@@ -8,12 +8,14 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "format": "prettier --write src/**",
-    "cypress:open": "CYPRESS_BASE_URL='http://localhost:5173/' cypress open"
+    "cypress:open": "CYPRESS_BASE_URL='http://localhost:3000' cypress open",
+    "cypress:run": "CYPRESS_BASE_URL='http://localhost:3000' cypress run"
   },
   "dependencies": {
     "@mui/icons-material": "^5.11.16",
     "@mui/material": "^5.11.16",
     "@mui/styled-engine-sc": "^5.11.11",
+    "dotenv": "^16.0.3",
     "formik": "^2.2.9",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
