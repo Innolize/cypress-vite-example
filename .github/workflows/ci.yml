@@ -9,15 +9,15 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+        
       - name: Cypress run
         uses: cypress-io/github-action@v5
         with:
           command: npm run cy:e2e
-      - name: Report LCOV
-        uses: zgosalvez/github-actions-report-lcov@v3.1.5
+      
+      - name: Report code coverage
+        uses: zgosalvez/github-actions-report-lcov@v1
         with:
-          coverage-files: coverage/lcov.info
+          coverage-files: ./coverage/lcov.info
           minimum-coverage: 50
-          artifact-name: code-coverage-report
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          update-comment: true
