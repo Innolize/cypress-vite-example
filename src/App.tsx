@@ -8,15 +8,17 @@ import MainPage from './pages/main'
 import { AuthProvider } from './providers/authProvider'
 import { ThemeProvider, createTheme } from '@mui/material'
 import { ROUTES } from './routes'
+import ButtonAppBar from './components/header'
 
 const defaultTheme = createTheme({ palette: { mode: 'dark' } })
 
 function App() {
   return (
-    <AuthProvider>
-      <ThemeProvider theme={defaultTheme}>
-        <BrowserRouter>
-          <div className="App">
+    <div className="App">
+      <AuthProvider>
+        <ThemeProvider theme={defaultTheme}>
+        <ButtonAppBar />
+          <BrowserRouter>
             <Routes>
               <Route path={ROUTES.HOME} Component={MainPage} />
               <Route path={ROUTES.SIGN_UP} Component={SignUp} />
@@ -24,10 +26,10 @@ function App() {
               <Route path={ROUTES.PRICING} Component={Pricing} />
               <Route path={ROUTES.CHECKOUT} Component={Checkout} />
             </Routes>
-          </div>
-        </BrowserRouter>
-      </ThemeProvider>
-    </AuthProvider>
+          </BrowserRouter>
+        </ThemeProvider>
+      </AuthProvider>
+    </div>
   )
 }
 

@@ -65,7 +65,7 @@ export default function SignIn() {
 
   useEffect(() => {
     if (user) {
-      navigate(ROUTES.CHECKOUT)
+      navigate(ROUTES.PRICING)
     }
   }, [user, navigate])
 
@@ -88,6 +88,7 @@ export default function SignIn() {
         </Typography>
         <Box
           component="form"
+          id="signin-form"
           onSubmit={formik.handleSubmit}
           noValidate
           sx={{ mt: 1 }}
