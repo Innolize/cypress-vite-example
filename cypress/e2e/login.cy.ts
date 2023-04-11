@@ -5,7 +5,7 @@ describe('login', () => {
   //   cy.visit('/signin')
   // })
 
-  it(()=>{
+  it('should visig signin page', () => {
     cy.visit('/signin')
   })
   // it('Should display errors if email and password parameters are incorrect', () => {
