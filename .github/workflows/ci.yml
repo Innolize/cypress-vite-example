@@ -13,3 +13,9 @@ jobs:
         uses: cypress-io/github-action@v5
         with:
           command: npm run cy:e2e
+      - name: Report code coverage
+        uses: zgosalvez/github-actions-report-lcov@v1
+        with:
+          coverage-files: ./coverage/lcov.info
+          minimum-coverage: 50
+          github-token: ${{ secrets.GITHUB_TOKEN }}
