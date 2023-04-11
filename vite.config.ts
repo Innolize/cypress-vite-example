@@ -9,7 +9,7 @@ config()
 // https://vitejs.dev/config/
 export default defineConfig({
   server: {
-    port: Number(process.env.PORT as string),
+    port: 3000,
   },
   plugins: [
     react(),
