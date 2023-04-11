@@ -1,0 +1,20 @@
+{
+  "all": true,
+  "repoter": ["text"],
+  "extends": "@istanbuljs/nyc-config-typescript",
+  "check-coverage": true,
+  "include": [
+      "src/**/*.ts",
+      "src/**/*.tsx"
+    ],
+    "exclude": [
+      "cypress/**/*.*",
+      "**/*.d.ts",
+      "**/*.cy.tsx",
+      "**/*.cy.ts"
+    ],
+    "branches": 50,
+    "lines": 50,
+    "functions": 50,
+    "statements": 50
+}
