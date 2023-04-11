@@ -1,9 +1,11 @@
 name: cypress
 on: push
+
+env:
+  PORT: ${{secrets.PORT}}
+
 jobs:
- cypress-run:
-    env:
-      PORT: ${{secrets.PORT}}
+  cypress-run:
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout
