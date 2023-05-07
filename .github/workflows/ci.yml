@@ -1,5 +1,12 @@
 name: cypress
-on: push
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["*"]
+
+permissions: write-all
+
 env:
   PORT: ${{secrets.PORT}}
 
@@ -9,7 +16,19 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+        
       - name: Cypress run
         uses: cypress-io/github-action@v5
         with:
           command: npm run cy:e2e
+      
+      - name: Setup LCOV
+        uses: hrishikesh-kadam/setup-lcov@v1
+
+      - name: Report code coverage
+        uses: zgosalvez/github-actions-report-lcov@v3
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          coverage-files: coverage/lcov.info
+          minimum-coverage: 50
+          
