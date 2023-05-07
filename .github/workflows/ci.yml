@@ -3,6 +3,8 @@ on: push
 env:
   PORT: ${{secrets.PORT}}
 
+permissions: write-all
+
 jobs:
   cypress-run:
     runs-on: ubuntu-22.04
