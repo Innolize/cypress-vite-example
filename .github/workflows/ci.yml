@@ -1,9 +1,10 @@
 name: cypress
 on: push
-env:
-  PORT: ${{secrets.PORT}}
 
 permissions: write-all
+
+env:
+  PORT: ${{secrets.PORT}}
 
 jobs:
   cypress-run:
